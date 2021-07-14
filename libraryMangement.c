@@ -27,6 +27,7 @@ struct libraryMangement
 
 //function declartions
 int optionSelector(); //options display functions
+void displayBooks(struct libraryMangement book[],int n); //function for displaly books
 
 //global variables
 int i; //loop variable
@@ -37,7 +38,7 @@ int main(){
     //create book struct
     struct libraryMangement book[1000];
     //local variable declartion
-    int option;
+    int option,noOfBooks;
     printf("****************************************\n");
     printf("\tLIBRARY MANAGEMENT SYSTEM\n");
     printf("****************************************\n");
@@ -48,6 +49,18 @@ int main(){
     {
     case 1:
         /* code */
+        printf("Enter the number of books you want to add:");
+        scanf("%d",&noOfBooks);
+        for(i=0;i<noOfBooks;i++){
+            printf("Enter the %d book name:",i+1);
+            scanf("%s",book[i].book_name);
+            printf("Enter the name of author :");
+            scanf("%s",book[i].book_author);
+            printf("Enter the access Number of the book:");
+            scanf("%d",&book[i].access_number);
+        }
+        printf("\nEnterd books are:\n");
+        displayBooks(book,noOfBooks);
         break;
     case 2:
         /* code */
@@ -76,4 +89,13 @@ int optionSelector(){
 
     return choice;
 
+}
+
+void displayBooks(struct libraryMangement book[],int n){
+    for(i=0;i<n;i++){
+        printf("\nbook No: %d",i+1);
+        printf("\nAccess No : %d",book[i].access_number);
+        printf("\nBook Name: %s",book[i].book_name);
+        printf("\nBook Author : %s",book[i].book_author);
+    }
 }
