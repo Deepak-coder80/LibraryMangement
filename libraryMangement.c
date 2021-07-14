@@ -1,5 +1,5 @@
 /***********************************************************************************
- * ######################### PROJECT DETAILS #################################### *
+ * ######################### PROBLEM DETAILS #################################### *
  * AUTHOR : DEEPAK M S
  * AIM    : Create a structure containing book information like accession number, 
             name of book and name of author. The maximum number of books in the 
@@ -51,21 +51,34 @@ int main(){
         printf("Enter the number of books you want to add:");
         scanf("%d",&noOfBooks);
         for(i=0;i<noOfBooks;i++){
+
             printf("Enter the %d book name:",i+1);
             scanf("%s",book[i].book_name);
             printf("Enter the name of author :");
             scanf("%s",book[i].book_author);
             printf("Enter the access Number of the book:");
             scanf("%d",&book[i].access_number);
+             printf("\n------------------------------------------------\n");
         }
-        printf("\nEnterd books are:\n");
+        //printf("\nEnterd books are:\n");
 
-        option = optionSelector();
-        if(option == 1){
-           // displayBooks(book,noOfBooks);
-           //sortBooks(book,noOfBooks);
-           bookOfAuthor(book,noOfBooks);
-        }
+        do
+        {
+            option = optionSelector();
+        
+            switch (option)
+            {
+            case 1:
+                sortBooks(book,noOfBooks);
+                break;
+            case 2:
+                bookOfAuthor(book,noOfBooks);
+                break;
+            
+            
+            }
+        } while (option != 0);
+        
         
 
 
@@ -74,12 +87,13 @@ int main(){
 
 int optionSelector(){
     int choice;
-    
+    printf("\n------------------------------------------------\n");
     printf("\n\tEnter 1 for display Books: ");
     printf("\n\tEnter 2 for search book by author: ");
-
+    printf("\n\tEnter 0 to exit: ");
     printf("\n\nEnter your choice here:");
     scanf("%d",&choice);
+     printf("\n------------------------------------------------\n");
 
     return choice;
 
@@ -87,10 +101,12 @@ int optionSelector(){
 
 void displayBooks(struct libraryMangement book[],int n){
     for(i=0;i<n;i++){
+        printf("\n------------------------------------------------\n");
         printf("\nbook No: %d",i+1);
         printf("\nAccess No : %d",book[i].access_number);
         printf("\nBook Name: %s",book[i].book_name);
         printf("\nBook Author : %s",book[i].book_author);
+         printf("\n------------------------------------------------\n");
     }
 }
 
@@ -111,13 +127,15 @@ void sortBooks(struct libraryMangement sort[],int n){
 
 void bookOfAuthor(struct libraryMangement sort[],int n){
     char author[50];
-    printf("Enter author name");
+    printf("\nEnter author name:");
     scanf("%s",author);
 
     for(i=0;i<n;i++){
         if(strcmp(sort[i].book_author,author)==0){
+             printf("\n------------------------------------------------\n");
             printf("\nAccess No : %d",sort[i].access_number);
             printf("\nBook Name: %s",sort[i].book_name);
+             printf("\n------------------------------------------------\n");
         }
     }
 
