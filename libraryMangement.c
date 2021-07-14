@@ -28,9 +28,11 @@ struct libraryMangement
 //function declartions
 int optionSelector(); //options display functions
 void displayBooks(struct libraryMangement book[],int n); //function for displaly books
+void sortBooks(struct libraryMangement sort[],int n); //function for sortbooks
 
 //global variables
 int i; //loop variable
+int j; //another loop vaiable
 int n; //size of books
 
 //main function
@@ -59,7 +61,8 @@ int main(){
 
         option = optionSelector();
         if(option == 1){
-            displayBooks(book,noOfBooks);
+           // displayBooks(book,noOfBooks);
+           sortBooks(book,noOfBooks);
         }
         
 
@@ -87,4 +90,19 @@ void displayBooks(struct libraryMangement book[],int n){
         printf("\nBook Name: %s",book[i].book_name);
         printf("\nBook Author : %s",book[i].book_author);
     }
+}
+
+
+void sortBooks(struct libraryMangement sort[],int n){
+    struct libraryMangement temp;
+    for(i=0;i<n-1;i++){
+        for(j=i+1;j<n;j++){
+            if(strcmp(sort[i].book_name,sort[j].book_name)>0){
+                temp = sort[i];
+                sort[i]= sort[j];
+                sort[j]=temp;
+            }
+        }
+    }
+    displayBooks(sort,n);
 }
