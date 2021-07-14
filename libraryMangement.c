@@ -43,12 +43,8 @@ int main(){
     printf("\tLIBRARY MANAGEMENT SYSTEM\n");
     printf("****************************************\n");
 
-    option = optionSelector();
-
-    switch (option)
-    {
-    case 1:
-        /* code */
+    
+        printf("There is No book in this Library yet. Please add books\n");
         printf("Enter the number of books you want to add:");
         scanf("%d",&noOfBooks);
         for(i=0;i<noOfBooks;i++){
@@ -60,19 +56,12 @@ int main(){
             scanf("%d",&book[i].access_number);
         }
         printf("\nEnterd books are:\n");
-        displayBooks(book,noOfBooks);
-        break;
-    case 2:
-        /* code */
-        break;
-    case 3:
-        /* code */
-        break;
-    
-    default:
-        printf("Invalid Entry");
-        break;
-    }
+
+        option = optionSelector();
+        if(option == 1){
+            displayBooks(book,noOfBooks);
+        }
+        
 
 
     return 0;
@@ -80,9 +69,9 @@ int main(){
 
 int optionSelector(){
     int choice;
-    printf("\n\tEnter 1 for Add books: ");
-    printf("\n\tEnter 2 for display Books: ");
-    printf("\n\tEnter 3 for search book by author: ");
+    
+    printf("\n\tEnter 1 for display Books: ");
+    printf("\n\tEnter 2 for search book by author: ");
 
     printf("\n\nEnter your choice here:");
     scanf("%d",&choice);
